@@ -4,7 +4,7 @@ add_filter( 'the_excerpt_rss', 'rgc_add_featured_image_to_feed_excerpt', 1000, 1
 
 function rgc_add_featured_image_to_feed_excerpt( $content ) {
 	if ( has_post_thumbnail( get_the_ID() ) ) {
-		$content =  "<table cellpadding=\"10\" align=\"right\"><tr><td>" . get_the_post_thumbnail( get_the_ID(), 'thumbnail', array( 'align' => 'right', 'style' => 'padding-left:10px;' ) ) . "</td></tr></table>" . $content;
+		$content =  "<table cellpadding=\"10\" align=\"right\"><tr><td>" . get_the_post_thumbnail( get_the_ID(), 'thumbnail', array( 'align' => 'right', 'style' => 'padding-left:10px;' ) ) . "</td></tr></table>" . $content;	
 	}
 	return $content;
 }
