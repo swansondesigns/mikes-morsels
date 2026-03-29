@@ -13,7 +13,11 @@
 <?php while (have_posts()) : the_post(); ?>	
 
    		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		 
+<?php if ( has_post_thumbnail() ) { ?>
+         <div class="pinbin-image"><a href="<?php the_permalink() ?>"><?php the_post_thumbnail( 'summary-image' );  ?></a></div>
+          <div class="pinbin-category"><p><?php the_category(', ') ?></p></div>
+       
+		  <?php } ?>		 
        			<div class="pinbin-copy"><h2><a class="front-link" href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
                 <p class="pinbin-date"><?php the_time(get_option('date_format')); ?>  </p>
 
