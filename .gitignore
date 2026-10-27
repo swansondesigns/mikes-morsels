@@ -1,1 +1,28 @@
-/index.php
+# Ignore everything
+/*
+
+# Git and tooling
+!.gitignore
+!.gitattributes
+!CLAUDE.md
+
+# Claude Code: rules, skills and subagents are shared config; local state stays out
+!.claude/
+.claude/*
+!.claude/rules/
+!.claude/skills/
+!.claude/agents/
+!.claude/settings.json
+
+# Deployment
+!.github/
+
+# Child theme. The parent theme (pinbin) is updated through WordPress, not kept here
+!wp-content/
+wp-content/*
+!wp-content/themes/
+wp-content/themes/*
+!wp-content/themes/mike-hall-masonry/
+
+# cPanel's FTP quota cache, written by the server
+.ftpquota

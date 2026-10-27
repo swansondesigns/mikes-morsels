@@ -1,4 +1,4 @@
-name: Deploy themes
+name: Deploy child theme
 
 on:
     push:
@@ -24,18 +24,12 @@ jobs:
                   mkdir -p ~/.ssh
                   ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
+            # Only the child theme deploys. The parent theme (pinbin) is updated through
+            # WordPress. .ftpquota is excluded so --delete leaves the server's own copy alone.
             - name: Deploy mike-hall-masonry
               run: |
                   rsync -azv --delete \
-                    --exclude=".git/" \
+                    --exclude=".ftpquota" \
                     -e "ssh -p ${{ secrets.DEPLOY_PORT }}" \
-                    mike-hall-masonry/ \
+                    wp-content/themes/mike-hall-masonry/ \
                     ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/home/${{ secrets.DEPLOY_USER }}/public_html/wp-content/themes/mike-hall-masonry/
-
-            - name: Deploy pinbin
-              run: |
-                  rsync -azv --delete \
-                    --exclude=".git/" \
-                    -e "ssh -p ${{ secrets.DEPLOY_PORT }}" \
-                    pinbin/ \
-                    ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/home/${{ secrets.DEPLOY_USER }}/public_html/wp-content/themes/pinbin/
