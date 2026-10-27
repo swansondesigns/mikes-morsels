@@ -1,0 +1,10 @@
+/*
+ * Classic editor content area. These declarations were an edit to pinbin's own
+ * editor-style.css (wordpress.org's 1.4.7 has padding: 0px 10px; width: 630px).
+ * WordPress loads the parent's editor stylesheet and then this one, so they hold
+ * whatever the parent ships.
+ */
+body {
+	padding: 5px 15px;
+	width: auto;
+}
